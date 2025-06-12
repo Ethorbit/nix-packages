@@ -3,5 +3,6 @@
 with pkgs;
 
 {
-    mousejail = callPackage ./mousejail {};
+    yt-dlp-wrapper = callPackage ./wrappers/yt-dlp {};
+    mousejail = callPackage ./tools/X11/mousejail {};
 }
