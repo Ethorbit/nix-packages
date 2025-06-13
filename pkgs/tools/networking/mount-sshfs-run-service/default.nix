@@ -7,10 +7,14 @@
 # While you technically could use Rclone, Rclone wants a static IP, so with a constantly changing IP you'd need to constantly edit the Rclone config's address
 # This script was made with the assumption that the IP may have already changed and expects the IP to be passed as an argument.
 
-{ pkgs, writeShellScriptBin }:
+{
+    sshfs,
+    writeText,
+    writeShellScriptBin
+}:
 
 let
-    helpText = pkgs.writeText "help-file" ''
+    helpText = writeText "help-file" ''
         -h|--host
             The hostname
 
@@ -124,7 +128,7 @@ in
             mkdir -p "$MOUNT_DIR"
 
             if [[ ! $(findmnt "$MOUNT_DIR" | grep fuse.sshfs) ]]; then
-                ${pkgs.sshfs}/bin/sshfs "$HOST"@"$IP":"$REMOTE_DIR" "$MOUNT_DIR" $SSHFS_EXTRA
+                ${sshfs}/bin/sshfs "$HOST"@"$IP":"$REMOTE_DIR" "$MOUNT_DIR" $SSHFS_EXTRA
 
                 if [ $? -ne 0 ]; then
                     echo "The SSHFS failed to mount, try again."

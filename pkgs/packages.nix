@@ -10,4 +10,5 @@ in
     mount-wait = cp ./tools/misc/mount-wait {};
     mount-sshfs-run-service = cp ./tools/networking/mount-sshfs-run-service {};
     yt-dlp-wrapper = cp ./tools/misc/yt-dlp-wrapper {};
+    obs-studio-plugins.obs-pulseaudio-app-capture = cp ./applications/video/obs-studio/plugins/obs-pulseaudio-app-capture {};
 }

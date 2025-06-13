@@ -1,4 +1,4 @@
-{ pkgs, writeShellScriptBin }:
+{ yt-dlp, writeShellScriptBin }:
 
 writeShellScriptBin "yt-dlp-wrapper.sh"
 ''
@@ -32,7 +32,7 @@ if [[ ! -z "$content" && ! -z "$dest" ]]; then
     mkdir -p $dest 
     
     if [ $audio ]; then 
-        ${pkgs.yt-dlp}/bin/yt-dlp "$content" -o "$dest/%(title)s.%(ext)s" \
+        ${yt-dlp}/bin/yt-dlp "$content" -o "$dest/%(title)s.%(ext)s" \
             -x \
             --restrict-filenames \
             --audio-format best \
@@ -41,7 +41,7 @@ if [[ ! -z "$content" && ! -z "$dest" ]]; then
             --no-mtime \
             --verbose
     else 
-        ${pkgs.yt-dlp}/bin/yt-dlp "$content" -o "$dest/%(title)s/%(title)s.%(ext)s" \
+        ${yt-dlp}/bin/yt-dlp "$content" -o "$dest/%(title)s/%(title)s.%(ext)s" \
             `[[ nothumbs -le 0 ]] && echo "-o "thumbnail:$dest/%(title)s/thumbnails/"` \
             -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" \
             --restrict-filenames \

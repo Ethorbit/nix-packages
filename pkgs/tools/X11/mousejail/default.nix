@@ -1,5 +1,8 @@
 {
-    pkgs,
+    libgcc,
+    pkg-config,
+    xorg,
+    xdotool,
     lib,
     fetchFromGitHub,
     stdenv,
@@ -7,7 +10,6 @@
 }:
 
 with lib;
-with pkgs;
 
 let
     src = (fetchFromGitHub {
@@ -35,6 +37,11 @@ let
             cp xbarrier "$out/bin/xbarrier"
             chmod +x "$out/bin/xbarrier"
         '';
+
+        meta = {
+            description = "A simple executable and script that allows the user to jail the mouse cursor inside a window";
+            platforms = lib.platforms.linux;
+        };
     });
 in
     # I cannot use the repo's unmodified script because it's too incompatible with nixos pathing
