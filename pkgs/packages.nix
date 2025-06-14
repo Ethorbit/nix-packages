@@ -7,6 +7,7 @@ let
     pycp = python3Packages.callPackage;
 in
 {
+    codebase-to-text = pycp ./tools/misc/codebase-to-text {};
     mousejail = cp ./tools/X11/mousejail {};
     mount-wait = cp ./tools/misc/mount-wait {};
     mount-sshfs-run-service = cp ./tools/networking/mount-sshfs-run-service {};
