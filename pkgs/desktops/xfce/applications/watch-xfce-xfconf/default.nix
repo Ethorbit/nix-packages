@@ -1,10 +1,10 @@
 {
     lib,
-    python312Packages,
-    fetchFromGitHub
+    buildPythonPackage,
+    fetchFromGitHub,
+    psutil,
+    lxml,
 }:
-
-with python312Packages;
 
 buildPythonPackage rec {
     pname = "watch-xfce-xfconf";

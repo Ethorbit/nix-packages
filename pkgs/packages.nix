@@ -13,6 +13,6 @@ in
     mount-sshfs-run-service = cp ./tools/networking/mount-sshfs-run-service {};
     obs-studio-plugins.obs-pulseaudio-app-capture = cp ./applications/video/obs-studio/plugins/obs-pulseaudio-app-capture {};
     steam-acolyte = pycp ./tools/games/steam-acolyte {};
-    watch-xfce-xfconf = cp ./desktops/xfce/applications/watch-xfce-xfconf {};
+    watch-xfce-xfconf = pycp ./desktops/xfce/applications/watch-xfce-xfconf {};
     yt-dlp-wrapper = cp ./tools/misc/yt-dlp-wrapper {};
 }
