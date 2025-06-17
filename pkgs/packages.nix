@@ -2,17 +2,23 @@
 
 with pkgs;
 
-let
-    cp = callPackage;
-    pycp = python3Packages.callPackage;
-in
-{
-    codebase-to-text = pycp ./tools/misc/codebase-to-text {};
-    mousejail = cp ./tools/X11/mousejail {};
-    mount-wait = cp ./tools/misc/mount-wait {};
-    mount-sshfs-run-service = cp ./tools/networking/mount-sshfs-run-service {};
-    obs-studio-plugins.obs-pulseaudio-app-capture = cp ./applications/video/obs-studio/plugins/obs-pulseaudio-app-capture {};
-    steam-acolyte = pycp ./tools/games/steam-acolyte {};
-    watch-xfce-xfconf = pycp ./desktops/xfce/applications/watch-xfce-xfconf {};
-    yt-dlp-wrapper = cp ./tools/misc/yt-dlp-wrapper {};
+rec {
+    codebase-to-text = python312Packages.callPackage ./tools/misc/codebase-to-text {};
+
+    mousejail = callPackage ./tools/X11/mousejail {};
+
+    mount-wait = callPackage ./tools/misc/mount-wait {};
+    mount-sshfs-run-service = callPackage ./tools/networking/mount-sshfs-run-service {};
+
+    obs-studio-plugins.obs-pulseaudio-app-capture = callPackage ./applications/video/obs-studio/plugins/obs-pulseaudio-app-capture {};
+
+    selkies-gstreamer = python311Packages.callPackage ./servers/selkies-gstreamer {
+        ethorbit.pythonPackages = ethorbit.python311Packages;
+    };
+
+    steam-acolyte = python312Packages.callPackage ./tools/games/steam-acolyte {};
+
+    watch-xfce-xfconf = python312Packages.callPackage ./desktops/xfce/applications/watch-xfce-xfconf {};
+
+    yt-dlp-wrapper = callPackage ./tools/misc/yt-dlp-wrapper {};
 }
