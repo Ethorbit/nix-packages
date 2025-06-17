@@ -1,5 +1,5 @@
 {
-    description = "Ethorbit's custom nixpkgs";
+    description = ''An overlay containing packages maintained by Ethorbit.'';
 
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/release-24.11";
