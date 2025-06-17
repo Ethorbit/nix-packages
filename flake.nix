@@ -9,12 +9,6 @@
     outputs = { self, nixpkgs, utils, ... }:
         utils.lib.eachDefaultSystem (system:
             let
-                pkgs = import nixpkgs {
-                    inherit system;
-                    config.allowUnfree = true;
-                    overlays = [ overlay ];
-                };
-
                 overlay = final: prev: {
                     ethorbit = {
                         python3Packages = import ./pkgs/python-packages.nix {
@@ -32,6 +26,12 @@
                         pkgs = final;
                         lib = final.lib;
                     };
+                };
+
+                pkgs = import nixpkgs {
+                    inherit system;
+                    config.allowUnfree = true;
+                    overlays = [ overlay ];
                 };
             in {
                 overlays.default = overlay;
