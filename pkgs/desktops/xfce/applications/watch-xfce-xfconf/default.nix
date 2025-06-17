@@ -25,7 +25,10 @@ buildPythonPackage rec {
     doCheck = false;
 
     meta = {
-        description = ''watch-xfce-xfconf: Configure XFCE 4 programmatically using the xfconf-query commands displayed by watch-xfce-xfconf'';
+        description = ''
+            watch-xfce-xfconf: Configure XFCE 4 programmatically 
+            using the xfconf-query commands displayed by watch-xfce-xfconf
+        '';
         homepage = "https://github.com/jamescherti/watch-xfce-xfconf";
         license = lib.licenses.mit;
         platforms = lib.platforms.linux;

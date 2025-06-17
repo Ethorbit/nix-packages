@@ -19,7 +19,10 @@ buildPythonPackage {
     doCheck = false;
 
     meta = {
-        description = "A Python module for getting the GPU status from NVIDA GPUs using nvidia-smi programmically in Python";
+        description = ''
+            A Python module for getting the GPU status 
+            from NVIDA GPUs using nvidia-smi programmically in Python
+        '';
         homepage = "https://github.com/anderskm/gputil";
         license = lib.licenses.mit;
     };

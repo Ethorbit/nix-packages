@@ -34,7 +34,10 @@ stdenv.mkDerivation {
     '';
 
     meta = {
-        description = "A simple executable and script that allows the user to jail the mouse cursor inside a window";
+        description = ''
+            A simple executable and script that allows 
+            the user to jail the mouse cursor inside a window
+        '';
         homepage = "https://github.com/pfanne/mousejail";
         platforms = lib.platforms.linux;
     };

@@ -31,7 +31,7 @@ buildPythonPackage rec {
     doCheck = false;
 
     meta = {
-        description = ''Lightweight Steam Account Switcher'';
+        description = "Lightweight Steam Account Switcher";
         homepage = "https://github.com/coldfix/steam-acolyte";
         license = lib.licenses.unlicense;
         platforms = lib.platforms.linux;

@@ -71,7 +71,10 @@ in
         '';
 
         meta = {
-            description = "Open-Source Low-Latency Linux WebRTC HTML5 Remote Desktop and 3D Graphics / Game Streaming Platform with GStreamer";
+            description = ''
+                Open-Source Low-Latency Linux WebRTC HTML5 Remote Desktop 
+                and 3D Graphics / Game Streaming Platform with GStreamer
+            '';
             homepage = "https://github.com/selkies-project/selkies-gstreamer";
             license = lib.licenses.mpl20;
         };
