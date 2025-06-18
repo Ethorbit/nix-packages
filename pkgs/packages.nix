@@ -24,6 +24,8 @@ rec {
 
     steam-acolyte = python312Packages.callPackage ./tools/games/steam-acolyte {};
 
+    vimPlugins = recurseIntoAttrs (callPackage ./applications/editors/vim/plugins { });
+
     watch-xfce-xfconf = (
         python312Packages.callPackage ./desktops/xfce/applications/watch-xfce-xfconf {}
     );
