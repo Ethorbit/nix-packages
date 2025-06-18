@@ -18,6 +18,8 @@ rec {
 
     obs-studio-plugins = recurseIntoAttrs (callPackage ./applications/video/obs-studio/plugins { });
 
+    rofi-adi1090x = callPackage applications/misc/rofi-adi1090x {};
+
     selkies-gstreamer = python311Packages.callPackage ./servers/selkies-gstreamer {
         ethorbit.pythonPackages = ethorbit.python311Packages;
     };
