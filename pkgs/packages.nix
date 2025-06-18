@@ -5,6 +5,8 @@ with pkgs;
 rec {
     codebase-to-text = python312Packages.callPackage ./tools/misc/codebase-to-text {};
 
+    ctrld = callPackage ./servers/ctrld {};
+
     filen-cli = callPackage ./tools/networking/filen-cli {};
 
     gmpublisher = python312Packages.callPackage ./tools/games/gmpublisher {};
