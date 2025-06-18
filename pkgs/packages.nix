@@ -22,6 +22,8 @@ rec {
 
     steam-acolyte = python312Packages.callPackage ./tools/games/steam-acolyte {};
 
+    traefik-forward-auth = callPackage servers/traefik-forward-auth {};
+
     vimPlugins = recurseIntoAttrs (callPackage ./applications/editors/vim/plugins { });
 
     watch-xfce-xfconf = (
