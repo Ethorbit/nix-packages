@@ -14,9 +14,7 @@ rec {
     mount-wait = callPackage ./tools/misc/mount-wait {};
     mount-sshfs-run-service = callPackage ./tools/networking/mount-sshfs-run-service {};
 
-    obs-studio-plugins.obs-pulseaudio-app-capture = (
-        callPackage ./applications/video/obs-studio/plugins/obs-pulseaudio-app-capture {}
-    );
+    obs-studio-plugins = recurseIntoAttrs (callPackage ./applications/video/obs-studio/plugins { });
 
     selkies-gstreamer = python311Packages.callPackage ./servers/selkies-gstreamer {
         ethorbit.pythonPackages = ethorbit.python311Packages;
