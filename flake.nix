@@ -10,22 +10,23 @@
         utils.lib.eachDefaultSystem (system:
             let
                 overlay = final: prev: {
-                    ethorbit = {
-                        python3Packages = import ./pkgs/python-packages.nix {
+                    python3Packages = prev.python3Packages // 
+                        (import ./pkgs/python-packages.nix {
                             pythonPackages = pkgs.python3Packages;
-                        };
-                    
-                        python311Packages = import ./pkgs/python-packages.nix {
-                            pythonPackages = pkgs.python311Packages;
-                        };
+                        });
 
-                        python312Packages = import ./pkgs/python-packages.nix {
+                    python311Packages = prev.python311Packages // 
+                        (import ./pkgs/python-packages.nix {
+                            pythonPackages = pkgs.python311Packages;
+                        });
+
+                    python312Packages = prev.python312Packages // 
+                        (import ./pkgs/python-packages.nix {
                             pythonPackages = pkgs.python312Packages;
-                        };
-                    } // import ./pkgs/packages.nix {
-                        pkgs = final;
-                        lib = final.lib;
-                    };
+                        });
+                } // import ./pkgs/packages.nix {
+                    pkgs = final;
+                    lib = final.lib;
                 };
 
                 pkgs = import nixpkgs {
@@ -35,7 +36,7 @@
                 };
             in {
                 overlays.default = overlay;
-                packages = pkgs.ethorbit;
+                packages = pkgs;
             } // {
                 nixosModules.default = import ./nixos/modules;
             });

@@ -1,6 +1,5 @@
 {
     lib,
-    ethorbit,
     buildPythonPackage,
     fetchurl,
     gobject-introspection,
@@ -45,8 +44,8 @@ in
         ];
 
         propagatedBuildInputs = [
-            ethorbit.pythonPackages.gputil
-            ethorbit.pythonPackages.basicauth
+            pythonPackages.gputil
+            pythonPackages.basicauth
             pythonPackages.gst-python
             pythonPackages.pygobject3
             pythonPackages.watchdog

@@ -23,7 +23,7 @@ rec {
     rofi-adi1090x = callPackage applications/misc/rofi-adi1090x {};
 
     selkies-gstreamer = python311Packages.callPackage ./servers/selkies-gstreamer {
-        ethorbit.pythonPackages = ethorbit.python311Packages;
+        pythonPackages = python311Packages;
     };
 
     steam-acolyte = python312Packages.callPackage ./tools/games/steam-acolyte {};

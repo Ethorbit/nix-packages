@@ -39,7 +39,7 @@ in
             echo "X socket is ready"
 
             # Resize the screen to the provided size
-            ${pkgs.ethorbit.selkies-gstreamer}/bin/selkies-gstreamer-resize ''${DISPLAY_SIZEW}x''${DISPLAY_SIZEH}
+            ${pkgs.selkies-gstreamer}/bin/selkies-gstreamer-resize ''${DISPLAY_SIZEW}x''${DISPLAY_SIZEH}
 
             # Run the x11vnc + noVNC fallback web interface if enabled
             if [ "''${NOVNC_ENABLE,,}" = "true" ]; then
