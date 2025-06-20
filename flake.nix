@@ -37,7 +37,8 @@
             in {
                 overlays.default = overlay;
                 packages = pkgs;
-            } // {
+            }
+            ) // {
                 nixosModules.default = import ./nixos/modules;
-            });
+            };
 }
