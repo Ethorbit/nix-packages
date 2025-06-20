@@ -7,10 +7,6 @@ let
     [ -s "$PASSWD_FILE" ] && export PASSWD=$(cat "$PASSWD_FILE") && export SELKIES_BASIC_AUTH_PASSWORD="$PASSWD"
     [ -s "$SELKIES_TURN_SHARED_SECRET_FILE" ] && export SELKIES_TURN_SHARED_SECRET=$(cat "$SELKIES_TURN_SHARED_SECRET_FILE")
 
-    # Source environment for GStreamer
-    # . /opt/gstreamer/gst-env
-    # . ${pkgs.selkies-gstreamer}/env
-
     # Set default display
     export DISPLAY="''${DISPLAY:-:0}"
 
@@ -28,7 +24,7 @@ let
     rm -rf "''${HOME}/.cache/gstreamer-1.0"
 
     # Start the selkies-gstreamer WebRTC HTML5 remote desktop application
-    ${pkgs.selkies-gstreamer}/bin/selkies-gstreamer $@
+    ${pkgs.ethorbit.selkies-gstreamer}/bin/selkies-gstreamer $@
     '';
 in
 {
