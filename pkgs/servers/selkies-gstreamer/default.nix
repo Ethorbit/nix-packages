@@ -32,19 +32,7 @@ in
         ];
 
         buildInputs = [
-            ethorbit.pythonPackages.gputil
-            ethorbit.pythonPackages.basicauth
             libnice.out
-            pythonPackages.gst-python
-            pythonPackages.pygobject3
-            pythonPackages.watchdog
-            pythonPackages.xlib
-            pythonPackages.pynput
-            pythonPackages.msgpack
-            pythonPackages.pillow
-            pythonPackages.websockets
-            pythonPackages.psutil
-            pythonPackages.prometheus-client
             gst_all_1.gstreamer.out
             gst_all_1.gst-libav
             gst_all_1.gst-devtools
@@ -56,6 +44,21 @@ in
             xorg.xrandr
         ];
 
+        propagatedBuildInputs = [
+            ethorbit.pythonPackages.gputil
+            ethorbit.pythonPackages.basicauth
+            pythonPackages.gst-python
+            pythonPackages.pygobject3
+            pythonPackages.watchdog
+            pythonPackages.xlib
+            pythonPackages.pynput
+            pythonPackages.msgpack
+            pythonPackages.pillow
+            pythonPackages.websockets
+            pythonPackages.psutil
+            pythonPackages.prometheus-client
+        ];
+
         preFixup = ''
             for f in $(find $out/bin/ -type f -executable); do
                 wrapProgram "$f" \
@@ -65,8 +68,7 @@ in
                   --prefix SELKIES_WEB_ROOT ":" "${web}/gst-web" \
                   --prefix GI_TYPELIB_PATH ":" "${gobject-introspection.out}/lib/girepository-1.0:$GI_TYPELIB_PATH" \
                   --prefix GST_PY_PATH ":" "${pythonPackages.gst-python}/lib/python3.11" \
-                  --prefix GST_PLUGIN_SYSTEM_PATH_1_0 ":" "${libnice.out}/lib/gstreamer-1.0:${gst_all_1.gstreamer.out}/lib/gstreamer-1.0:${gst_all_1.gst-plugins-base}/lib/gstreamer-1.0:${gst_all_1.gst-plugins-good}/lib/gstreamer-1.0:${gst_all_1.gst-plugins-bad}/lib/gstreamer-1.0:${gst_all_1.gst-plugins-ugly}/lib/gstreamer-1.0" \
-                  --prefix PYTHONPATH ":" "${pythonPackages.gst-python}/lib/python3.11/site-packages:$PYTHONPATH"
+                  --prefix GST_PLUGIN_SYSTEM_PATH_1_0 ":" "${libnice.out}/lib/gstreamer-1.0:${gst_all_1.gstreamer.out}/lib/gstreamer-1.0:${gst_all_1.gst-plugins-base}/lib/gstreamer-1.0:${gst_all_1.gst-plugins-good}/lib/gstreamer-1.0:${gst_all_1.gst-plugins-bad}/lib/gstreamer-1.0:${gst_all_1.gst-plugins-ugly}/lib/gstreamer-1.0"
             done
         '';
 

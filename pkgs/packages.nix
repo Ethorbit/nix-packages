@@ -16,6 +16,8 @@ rec {
     mount-wait = callPackage ./tools/misc/mount-wait {};
     mount-sshfs-run-service = callPackage ./tools/networking/mount-sshfs-run-service {};
 
+    nixosTests = import ../nixos/tests/default.nix { inherit pkgs; };
+
     obs-studio-plugins = recurseIntoAttrs (callPackage ./applications/video/obs-studio/plugins { });
 
     rofi-adi1090x = callPackage applications/misc/rofi-adi1090x {};

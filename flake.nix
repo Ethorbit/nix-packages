@@ -1,5 +1,5 @@
 {
-    description = "An overlay containing packages maintained by Ethorbit.";
+    description = "Collection of packages and NixOS modules by Ethorbit.";
 
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/release-24.11";
@@ -36,5 +36,7 @@
             in {
                 overlays.default = overlay;
                 packages = pkgs.ethorbit;
+            } // {
+                nixosModules.default = import ./nixos/modules;
             });
 }
