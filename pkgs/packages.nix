@@ -32,9 +32,7 @@ rec {
 
     vimPlugins = recurseIntoAttrs (callPackage ./applications/editors/vim/plugins { });
 
-    watch-xfce-xfconf = (
-        python312Packages.callPackage ./desktops/xfce/applications/watch-xfce-xfconf {}
-    );
+    xfce = recurseIntoAttrs (callPackage ./desktops/xfce { });
 
     yt-dlp-wrapper = callPackage ./tools/misc/yt-dlp-wrapper {};
 }
