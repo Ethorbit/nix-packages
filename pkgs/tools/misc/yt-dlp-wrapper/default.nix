@@ -6,16 +6,18 @@ writeShellScriptBin "yt-dlp-wrapper.sh"
 
 maxnum="99999999"
 nothumbs=0
+vidres="1080"
 
-while getopts ":c:d:a:n:" opt; do
+while getopts ":c:d:a:n:r:" opt; do
     case "$opt" in
         c) content=$OPTARG ;;
         d) dest=$OPTARG ;;
         a) audio=$OPTARG ;;
         n) maxnum=$OPTARG ;;
+        r) vidres=$OPTARG ;;
         --nothumbnails) nothumbs=1 ;;
-    esac 
-done 
+    esac
+done
 shift $(( OPTIND - 1 ))
 
 if [ -z "$content" ]; then 
@@ -30,28 +32,35 @@ fi
 if [[ ! -z "$content" && ! -z "$dest" ]]; then
     echo "Downloading $content to $dest..."
     mkdir -p $dest 
-    
-    if [ $audio ]; then 
-        ${yt-dlp}/bin/yt-dlp "$content" -o "$dest/%(title)s.%(ext)s" \
+
+    if [ $audio ]; then
+        ${yt-dlp}/bin/yt-dlp "$content" --output "$dest/%(title)s.%(ext)s" \
             -x \
             --restrict-filenames \
             --audio-format best \
             --audio-quality 0 \
             --max-downloads $maxnum \
             --no-mtime \
+            --embed-thumbnail \
+            --embed-metadata \
             --verbose
     else 
-        ${yt-dlp}/bin/yt-dlp "$content" -o "$dest/%(title)s/%(title)s.%(ext)s" \
-            `[[ nothumbs -le 0 ]] && echo "-o "thumbnail:$dest/%(title)s/thumbnails/"` \
-            -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" \
+        ${yt-dlp}/bin/yt-dlp "$content" --output "$dest/%(title)s/%(title)s.%(ext)s" \
+            `[[ nothumbs -le 0 ]] && echo "--output "thumbnail:$dest/%(title)s/thumbnails/"` \
+            --format "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" \
+            --format-sort res:$vidres,fps \
             --restrict-filenames \
             --merge-output-format mp4 \
             --write-info-json \
             --write-annotations \
             --write-description \
             --write-all-thumbnails \
+            --embed-thumbnail \
+            --embed-metadata \
+            --embed-subs \
+            --embed-chapters \
             --max-downloads $maxnum \
             --verbose
-    fi 
-fi 
+    fi
+fi
 ''
