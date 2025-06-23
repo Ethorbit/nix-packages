@@ -23,7 +23,7 @@ outputs = { nixpkgs, ethorbit, ... }: {
             ./configuration.nix
         ];
     };
-}
+};
 ```
 
-Use `ethorbit.<package name>` anywhere in your configs
+Use `ethorbit.<name>` anywhere in your configs
