@@ -11,7 +11,7 @@ pkgs.nixosTest {
                 ../modules
             ];
 
-            programs.termdown-wrapper.enable = true;
+            ethorbit.programs.termdown-wrapper.enable = true;
         };
     };
 

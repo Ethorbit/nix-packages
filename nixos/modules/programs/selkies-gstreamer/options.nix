@@ -1,7 +1,10 @@
 { config, lib, pkgs, ... }:
 
+let
+    cfg = config.ethorbit.programs.selkies-gstreamer;
+in
 {
-    options.programs.selkies-gstreamer = with lib; {
+    options.ethorbit.programs.selkies-gstreamer = with lib; {
         enable = mkOption {
             type = types.bool;
             default = false;
@@ -13,7 +16,7 @@
                 type = types.package;
                 default = pkgs.writeShellScriptBin "script" ''
                     USER=$(id -un)
-                    [ "$USER" = "${config.programs.selkies-gstreamer.settings.user}" ] || exit 1
+                    [ "$USER" = "${cfg.settings.user}" ] || exit 1
                 '';
             };
         };

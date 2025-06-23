@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-    cfg = config.programs.selkies-gstreamer;
+    cfg = config.ethorbit.programs.selkies-gstreamer;
 in
 {
     imports = [

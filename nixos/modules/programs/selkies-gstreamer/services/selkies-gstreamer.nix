@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-    cfg = config.programs.selkies-gstreamer;
+    cfg = config.ethorbit.programs.selkies-gstreamer;
 
     entrypoint = pkgs.writeShellScriptBin "script" ''
     [ -s "$PASSWD_FILE" ] && export PASSWD=$(cat "$PASSWD_FILE") && export SELKIES_BASIC_AUTH_PASSWORD="$PASSWD"

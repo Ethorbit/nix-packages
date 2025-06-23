@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-    cfg = config.programs.selkies-gstreamer;
+    cfg = config.ethorbit.programs.selkies-gstreamer;
 
     sessionScript = pkgs.writeShellScriptBin "script" ''
         ${config.services.xserver.displayManager.sessionCommands}

@@ -1,13 +1,13 @@
 { config, lib, ... }:
 
-with config.programs.selkies-gstreamer;
+with config.ethorbit.programs.selkies-gstreamer;
 with settings;
 with display;
 with resolution;
 with auth;
 
 let
-    cfg = config.programs.selkies-gstreamer;
+    cfg = config.ethorbit.programs.selkies-gstreamer;
 in
 {
     config = lib.mkIf cfg.enable {

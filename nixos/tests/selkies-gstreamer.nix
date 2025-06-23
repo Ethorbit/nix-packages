@@ -12,7 +12,7 @@ pkgs.nixosTest {
                 ./common/user-account.nix
             ];
 
-            programs.selkies-gstreamer = {
+            ethorbit.programs.selkies-gstreamer = {
                 enable = true;
 
                 settings = {
