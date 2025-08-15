@@ -1,7 +1,6 @@
 Reusable nix packages and NixOS modules by yours truly
 
-### Implementation Example
-
+Importing:
 ```nix
 inputs = {
     nixpkgs.url = "whatever";
@@ -28,5 +27,5 @@ outputs = { nixpkgs, ethorbit, ... }: {
 
 Installing a package:
 ```nix
-    environment.systemPackages = [ ethorbit.pkg-name ];
+environment.systemPackages = [ ethorbit.pkg-name ];
 ```
