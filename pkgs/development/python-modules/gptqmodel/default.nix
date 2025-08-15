@@ -1,6 +1,5 @@
 {
     ethorbitPythonPackages,
-    lib,
     pythonPackages,
     buildPythonPackage,
     fetchFromGitHub
@@ -19,7 +18,7 @@ buildPythonPackage {
 
     doCheck = false;
 
-    buildInputs = with ethorbitPythonPackages; with pythonPackages; [ 
+    propagatedBuildInputs = with ethorbitPythonPackages; with pythonPackages; [
         random-word
         device-smi
         tokenicer
