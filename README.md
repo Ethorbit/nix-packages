@@ -26,4 +26,7 @@ outputs = { nixpkgs, ethorbit, ... }: {
 };
 ```
 
-Use `ethorbit.<name>` anywhere in your configs
+Installing a package:
+```nix
+    environment.systemPackages = [ ethorbit.pkg-name ];
+```
