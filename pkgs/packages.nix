@@ -30,6 +30,10 @@ rec {
 
     traefik-forward-auth = callPackage servers/traefik-forward-auth {};
 
+    taggui = python312Packages.callPackage ./applications/editors/taggui {
+        ethorbit.pythonPackages = ethorbit.python312Packages;
+    };
+
     vimPlugins = recurseIntoAttrs (callPackage ./applications/editors/vim/plugins { });
 
     xfce = recurseIntoAttrs (callPackage ./desktops/xfce { });
