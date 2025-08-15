@@ -48,7 +48,7 @@ in
             cat > $out/share/applications/${name}.desktop << EOF
             [Desktop Entry]
             Name=taggui
-            Exec="${pythonEnv}/bin/python $out/taggui/run_gui.py"
+            Exec=${pythonEnv}/bin/python $out/taggui/run_gui.py
             Type=Application
             Categories=Utility;
             EOF
