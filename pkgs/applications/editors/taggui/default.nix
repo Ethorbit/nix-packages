@@ -1,15 +1,15 @@
 {
     python,
-    ethorbit,
     stdenv,
-    fetchFromGitHub
+    fetchFromGitHub,
+    gptqmodel
 }:
 
 let
     name = "taggui";
 
     pythonEnv = python.withPackages (ps: with ps; [
-         ethorbit.pythonPackages.gptqmodel
+         gptqmodel
          accelerate
          bitsandbytes
          exifread

@@ -2,7 +2,7 @@
     description = "Collection of packages and NixOS modules by Ethorbit.";
 
     inputs = {
-        nixpkgs.url = "github:nixos/nixpkgs/release-24.11";
+        nixpkgs.url = "github:nixos/nixpkgs/release-25.05";
         utils.url = "github:numtide/flake-utils";
     };
 
@@ -11,15 +11,15 @@
             default = final: prev: {
                 ethorbit = {
                     python3Packages = import ./pkgs/python-packages.nix {
-                        pythonPackages = final.python3Packages;
+                        python = final.python3;
                     };
 
                     python311Packages = import ./pkgs/python-packages.nix {
-                        pythonPackages = final.python311Packages;
+                        python = final.python311;
                     };
 
                     python312Packages = import ./pkgs/python-packages.nix {
-                        pythonPackages = final.python312Packages;
+                        python = final.python312;
                     };
                 } // import ./pkgs/packages.nix {
                     pkgs = final;

@@ -1,8 +1,22 @@
 {
-    ethorbitPythonPackages,
-    pythonPackages,
     buildPythonPackage,
-    fetchFromGitHub
+    fetchFromGitHub,
+    random-word,
+    device-smi,
+    tokenicer,
+    logbar,
+    accelerate,
+    numpy,
+    torch,
+    safetensors,
+    transformers,
+    threadpoolctl,
+    packaging,
+    protobuf,
+    pillow,
+    hf-transfer,
+    huggingface-hub,
+    soundfile
 }:
 
 buildPythonPackage {
@@ -18,7 +32,7 @@ buildPythonPackage {
 
     doCheck = false;
 
-    propagatedBuildInputs = with ethorbitPythonPackages; with pythonPackages; [
+    propagatedBuildInputs = [
         random-word
         device-smi
         tokenicer

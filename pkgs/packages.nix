@@ -23,7 +23,8 @@ rec {
     rofi-adi1090x = callPackage applications/misc/rofi-adi1090x {};
 
     selkies-gstreamer = python311Packages.callPackage ./servers/selkies-gstreamer {
-        ethorbit.pythonPackages = ethorbit.python311Packages;
+        gputil = ethorbit.python311Packages.gputil;
+        basicauth = ethorbit.python311Packages.basicauth;
     };
 
     steam-acolyte = python312Packages.callPackage ./tools/games/steam-acolyte {};
@@ -31,7 +32,7 @@ rec {
     traefik-forward-auth = callPackage servers/traefik-forward-auth {};
 
     taggui = python312Packages.callPackage ./applications/editors/taggui {
-        ethorbit.pythonPackages = ethorbit.python312Packages;
+        gptqmodel = ethorbit.python312Packages.gptqmodel;
     };
 
     vimPlugins = recurseIntoAttrs (callPackage ./applications/editors/vim/plugins { });

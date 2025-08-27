@@ -1,8 +1,12 @@
 {
     buildPythonPackage,
     fetchFromGitHub,
-    pythonPackages,
-    lib
+    lib,
+    poetry-core,
+    autopep8,
+    pytest,
+    pyyaml,
+    requests
 }:
 
 buildPythonPackage {
@@ -17,7 +21,7 @@ buildPythonPackage {
         hash = "sha256-h3GGGqQ/GiI6r3HNydz872WH5bGbGWkVmHOOFEVIJ+Y=";
     });
 
-    buildInputs = with pythonPackages; [
+    buildInputs = [
         poetry-core
         autopep8
         pytest

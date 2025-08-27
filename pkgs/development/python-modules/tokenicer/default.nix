@@ -1,7 +1,7 @@
 {
     buildPythonPackage,
     fetchFromGitHub,
-    pythonPackages
+    transformers
 }:
 
 buildPythonPackage {
@@ -16,7 +16,7 @@ buildPythonPackage {
     });
 
     buildInputs = [
-        pythonPackages.transformers
+        transformers
     ];
 
     doCheck = false;

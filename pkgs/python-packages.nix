@@ -1,6 +1,6 @@
-{ pythonPackages }:
+{ python }:
 
-with pythonPackages;
+with python.pkgs;
 
 let
     self = {
@@ -8,7 +8,7 @@ let
         device-smi = callPackage ./development/python-modules/device-smi {};
         gputil = callPackage ./development/python-modules/gputil {};
         gptqmodel = callPackage ./development/python-modules/gptqmodel {
-            ethorbitPythonPackages = self;
+            inherit (self) random-word device-smi tokenicer logbar;
         };
         logbar = callPackage ./development/python-modules/logbar {};
         tokenicer = callPackage ./development/python-modules/tokenicer {};
