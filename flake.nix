@@ -10,16 +10,16 @@
         overlays = {
             default = final: prev: {
                 ethorbit = {
-                    python3Packages = import ./pkgs/python-packages.nix {
-                        python = final.python3;
+                    python3 = final.python3 // {
+                        pkgs = import ./pkgs/python-packages.nix { python = final.python3; };
                     };
 
-                    python311Packages = import ./pkgs/python-packages.nix {
-                        python = final.python311;
+                    python311 = final.python311 // {
+                        pkgs = import ./pkgs/python-packages.nix { python = final.python311; };
                     };
 
-                    python312Packages = import ./pkgs/python-packages.nix {
-                        python = final.python312;
+                    python312 = final.python312 // {
+                        pkgs = import ./pkgs/python-packages.nix { python = final.python312; };
                     };
                 } // import ./pkgs/packages.nix {
                     pkgs = final;

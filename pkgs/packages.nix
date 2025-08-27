@@ -2,7 +2,7 @@
 
 with pkgs;
 
-rec {
+{
     codebase-to-text = python312Packages.callPackage ./tools/misc/codebase-to-text {};
 
     ctrld = callPackage ./servers/ctrld {};
@@ -23,8 +23,8 @@ rec {
     rofi-adi1090x = callPackage applications/misc/rofi-adi1090x {};
 
     selkies-gstreamer = python311Packages.callPackage ./servers/selkies-gstreamer {
-        gputil = ethorbit.python311Packages.gputil;
-        basicauth = ethorbit.python311Packages.basicauth;
+        gputil = ethorbit.python311.pkgs.gputil;
+        basicauth = ethorbit.python311.pkgs.basicauth;
     };
 
     steam-acolyte = python312Packages.callPackage ./tools/games/steam-acolyte {};
@@ -32,7 +32,7 @@ rec {
     traefik-forward-auth = callPackage servers/traefik-forward-auth {};
 
     taggui = python312Packages.callPackage ./applications/editors/taggui {
-        gptqmodel = ethorbit.python312Packages.gptqmodel;
+        gptqmodel = ethorbit.python312.pkgs.gptqmodel;
     };
 
     vimPlugins = recurseIntoAttrs (callPackage ./applications/editors/vim/plugins { });
