@@ -23,7 +23,6 @@ let
          protobuf
          sentencepiece
          torchvision
-         xformers
          numpy
          huggingface-hub
          onnxruntime
