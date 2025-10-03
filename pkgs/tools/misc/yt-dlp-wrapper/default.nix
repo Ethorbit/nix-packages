@@ -35,9 +35,9 @@ if [[ ! -z "$content" && ! -z "$dest" ]]; then
 
     if [ $audio ]; then
         ${yt-dlp}/bin/yt-dlp "$content" --output "$dest/%(title)s.%(ext)s" \
-            -x \
+            --extract-audio \
             --restrict-filenames \
-            --format "bestaudio[protocol^=m3u8]/bestaudio" \
+            --format "bestaudio/best" \
             --audio-format mp3 \
             --audio-quality 0 \
             --max-downloads $maxnum \
