@@ -3,10 +3,17 @@
 
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/release-25.05";
+        nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
         utils.url = "github:numtide/flake-utils";
     };
 
-    outputs = { self, nixpkgs, utils, ... }: {
+    outputs = {
+        self,
+        nixpkgs,
+        nixpkgs-unstable,
+        utils,
+        ...
+    }: {
         overlays = {
             default = final: prev: {
                 ethorbit = {
@@ -23,6 +30,10 @@
                     };
                 } // import ./pkgs/packages.nix {
                     pkgs = final;
+                    pkgs-unstable = import nixpkgs-unstable {
+                        system = final.system;
+                        config.allowUnfree = true;
+                    };
                     lib = final.lib;
                 };
             };

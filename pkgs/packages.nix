@@ -1,4 +1,4 @@
-{ pkgs, lib }:
+{ pkgs, pkgs-unstable, lib }:
 
 with pkgs;
 
@@ -39,5 +39,5 @@ with pkgs;
 
     xfce = recurseIntoAttrs (callPackage ./desktops/xfce { });
 
-    yt-dlp-wrapper = callPackage ./tools/misc/yt-dlp-wrapper {};
+    yt-dlp-wrapper = pkgs-unstable.callPackage ./tools/misc/yt-dlp-wrapper {};
 }
