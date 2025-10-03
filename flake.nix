@@ -32,7 +32,7 @@
                     pkgs = final;
                     pkgs-unstable = import nixpkgs-unstable {
                         system = final.system;
-                        config.allowUnfree = true;
+                        config.allowUnfree = final.config.allowUnfree;
                     };
                     lib = final.lib;
                 };
