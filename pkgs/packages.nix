@@ -10,6 +10,7 @@ with pkgs;
     filen-cli = callPackage ./tools/networking/filen-cli {};
 
     gmpublisher = python312Packages.callPackage ./tools/games/gmpublisher {};
+    gm-autorun-ng = callPackage ./tools/games/gm-autorun-ng {};
 
     mousejail = callPackage ./tools/X11/mousejail {};
 
