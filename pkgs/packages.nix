@@ -11,6 +11,7 @@ with pkgs;
 
     gmpublisher = python312Packages.callPackage ./tools/games/gmpublisher {};
     gm-autorun-ng = callPackage ./tools/games/gm-autorun-ng {};
+    gm-autorun-ng-windows = pkgs.pkgsCross.mingwW64.callPackage ./tools/games/gm-autorun-ng {};
 
     mousejail = callPackage ./tools/X11/mousejail {};
 
