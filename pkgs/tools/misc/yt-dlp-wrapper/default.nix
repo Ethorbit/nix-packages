@@ -34,7 +34,7 @@ if [[ ! -z "$content" && ! -z "$dest" ]]; then
     mkdir -p $dest 
 
     if [ $audio ]; then
-        ${yt-dlp}/bin/yt-dlp "$content" --output "$dest/%(title)s.%(ext)s" \
+        /run/current-system/sw/bin/yt-dlp "$content" --output "$dest/%(title)s.%(ext)s" \
             --extract-audio \
             --restrict-filenames \
             --format "bestaudio/best" \
@@ -46,7 +46,7 @@ if [[ ! -z "$content" && ! -z "$dest" ]]; then
             --embed-metadata \
             --verbose
     else 
-        ${yt-dlp}/bin/yt-dlp "$content" --output "$dest/%(title)s/%(title)s.%(ext)s" \
+        /run/current-system/sw/bin/yt-dlp "$content" --output "$dest/%(title)s/%(title)s.%(ext)s" \
             `[[ nothumbs -le 0 ]] && echo "--output "thumbnail:$dest/%(title)s/thumbnails/"` \
             --format "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" \
             --format-sort res:$vidres,fps \
