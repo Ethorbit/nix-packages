@@ -1,6 +1,12 @@
+# All this is good for currently is building the binary
+#
+# This program makes a lot of bad habits that make it
+# incompatible with NixOS (lots of patching would be needed)
+
 {
     rustPlatform,
     fetchFromGitHub,
+    makeWrapper,
     makeDesktopItem,
     copyDesktopItems,
     lib
@@ -20,12 +26,21 @@ in
             sha256 = "sha256-YFuwSLMpjQfgv1fphGNP2iykIKSZxV5Hy25DoBoHKFo=";
         };
 
+        nativeBuildInputs = [
+            copyDesktopItems
+            makeWrapper
+        ];
+
         cargoLock = {
             lockFile = ./Cargo.lock;
             outputHashes = {
                 "retour-0.4.0-alpha.4" = "sha256-uYshUNdvDqMvoP4Z72JDckEkxWfrMttFJqMJ3WAVUxI=";
             };
         };
+
+        # Use nightly Rust
+        RUSTC_BOOTSTRAP = "1";
+        RUSTFLAGS = "--cfg=feature=\"let_chains\"";
 
         doCheck = false;
 
@@ -44,10 +59,6 @@ in
             done
         '';
 
-        # Use nightly Rust
-        RUSTC_BOOTSTRAP = "1";
-        RUSTFLAGS = "--cfg=feature=\"let_chains\"";
-
         desktopItems = [
             (makeDesktopItem {
                 name = "autorun-ng";
@@ -59,8 +70,6 @@ in
                 terminal = false;
             })
         ];
-
-        nativeBuildInputs = [ copyDesktopItems ];
 
         meta = with lib; {
             description = "A next-generation sandboxed GMod lua execution environment";
