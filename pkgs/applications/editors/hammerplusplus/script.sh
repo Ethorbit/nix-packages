@@ -22,6 +22,4 @@ if [ "$ARCH" = "win64" ]; then
     wine64 "$PKGBIN" "$@"
 else
     wine "$PKGBIN" "$@"
-else
-    echo "Invalid architecture specified."
 fi
