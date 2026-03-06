@@ -3,6 +3,7 @@
     stdenv,
     fetchurl,
     makeDesktopItem,
+    copyDesktopItems,
     makeWrapper,
     wine
 }:
@@ -13,6 +14,11 @@ stdenv.mkDerivation rec {
     inherit src;
 
     name = "hammerplusplus-${game-name}";
+
+    nativeBuildInputs = [
+        copyDesktopItems
+        makeWrapper
+    ];
 
     nativeRuntimeInputs = [
         wine
@@ -26,6 +32,8 @@ stdenv.mkDerivation rec {
     };
 
     installPhase = ''
+        runHook preInstall
+
         mkdir -p $out/bin
         mkdir -p $out/share/lib/hammerplusplus
         mkdir -p $out/share/icons/hicolor/256x256/apps
@@ -42,6 +50,8 @@ stdenv.mkDerivation rec {
         chmod +x $out/bin/hammerplusplus
 
         cp ${icon} $out/share/icons/hicolor/256x256/apps/hammerplusplus.png
+
+        runHook postInstall
     '';
 
     desktopItems = [
