@@ -43,8 +43,11 @@ in
             mkdir -p $out/share/lib/hammerplusplus
             mkdir -p $out/share/icons/hicolor/256x256/apps
 
+            cp ${src}/hammerplusplus_gmod_build8870/bin/win64/hammerplusplus.exe \
+               $out/share/lib/hammerplusplus/
+
             cp -r ${src}/hammerplusplus_gmod_build8870/bin/win64/hammerplusplus/* \
-                $out/share/lib/hammerplusplus/
+               $out/share/lib/hammerplusplus/
 
             # Wrap the executable
             PATH_BIN=${lib.makeBinPath nativeRuntimeInputs};
