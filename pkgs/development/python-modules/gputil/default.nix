@@ -1,7 +1,8 @@
 {
     lib,
     buildPythonPackage,
-    fetchFromGitHub
+    fetchFromGitHub,
+    setuptools
 }:
 
 buildPythonPackage {
@@ -14,6 +15,9 @@ buildPythonPackage {
         rev = "42ef071dfcb6469b7ab5ab824bde6ca9f6d0ab8a";
         hash = "sha256-uzdo8fnaV0YftJe/+rnLz635mI8Buj6DIkB4iSNyIRo=";
     });
+
+    pyproject = true;
+    build-system = [ setuptools ];
 
     # It errors out about not finding a GPU, so skip the check.
     doCheck = false;

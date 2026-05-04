@@ -3,7 +3,8 @@
     buildPythonPackage,
     fetchFromGitHub,
     python-docx,
-    gitpython
+    gitpython,
+    setuptools
 }:
 
 buildPythonPackage rec {
@@ -16,6 +17,9 @@ buildPythonPackage rec {
         rev = "${version}";
         hash = "sha256-IfWFvEmSEHJSuYBpO2BrY4jDGhzXPt6p4Ha4dlGh4Fo=";
     });
+
+    pyproject = true;
+    build-system = [ setuptools ];
 
     propagatedBuildInputs = [
         python-docx

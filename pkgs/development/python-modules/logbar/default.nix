@@ -1,6 +1,7 @@
 {
     buildPythonPackage,
-    fetchFromGitHub
+    fetchFromGitHub,
+    setuptools
 }:
 
 buildPythonPackage {
@@ -13,6 +14,9 @@ buildPythonPackage {
         rev = "v0.0.4";
         hash = "sha256-fBqWrS++0xqvJlObMkk3algnc03R39j3G/QVgVG9kMI=";
     });
+
+    pyproject = true;
+    build-system = [ setuptools ];
 
     doCheck = false;
 

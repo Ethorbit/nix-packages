@@ -1,7 +1,8 @@
 {
     lib,
     buildPythonPackage,
-    fetchFromGitHub
+    fetchFromGitHub,
+    setuptools
 }:
 
 buildPythonPackage {
@@ -14,6 +15,9 @@ buildPythonPackage {
         rev = "bccbe82ba961674b83f853bf141c7bf509198bf2";
         hash = "sha256-W7aPYUbbskTGzJdL5aCb1aOFRWPEF2ZuKZZFw4AYIoE=";
     });
+
+    pyproject = true;
+    build-system = [ setuptools ];
 
     meta = {
         description = "An incredibly simple HTTP basic auth implementation.";

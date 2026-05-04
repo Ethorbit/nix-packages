@@ -12,8 +12,8 @@
     steam,
     openssl,
     glib-networking,
-    libsoup,
-    webkitgtk_4_0,
+    libsoup_3,
+    webkitgtk_4_1,
     curl
 }:
 
@@ -71,8 +71,8 @@ in
         buildInputs = [
             openssl
             glib-networking # Most Tauri apps need networking
-            libsoup
-            webkitgtk_4_0
+            libsoup_3
+            webkitgtk_4_1
         ];
 
         postUnpack = ''

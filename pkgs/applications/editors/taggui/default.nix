@@ -2,7 +2,8 @@
     python,
     stdenv,
     fetchFromGitHub,
-    gptqmodel
+    gptqmodel,
+    setuptools
 }:
 
 let
@@ -37,6 +38,9 @@ in
             rev = "v1.33.0";
             hash = "sha256-d02xDtnps26RF6G8cMZfHNw7yrukVi7vI+Sg1SaHwxg=";
         });
+
+        pyproject = true;
+        build-system = [ setuptools ];
 
         installPhase = ''
             cp -r ./ $out/

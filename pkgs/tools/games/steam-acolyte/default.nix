@@ -6,7 +6,7 @@
     vdf,
     docopt,
     importlib-resources,
-    qt5
+    setuptools
 }:
 
 buildPythonPackage rec {
@@ -20,12 +20,14 @@ buildPythonPackage rec {
         hash = "sha256-ZVvuEvoXUmmUoOZJPLDVbQ7XvplP3ezhD6lhS0WfjiQ=";
     });
 
+    pyproject = true;
+    build-system = [ setuptools ];
+
     propagatedBuildInputs = [
         pyqt5
         vdf
         docopt
         importlib-resources
-        qt5.full
     ];
 
     doCheck = false;

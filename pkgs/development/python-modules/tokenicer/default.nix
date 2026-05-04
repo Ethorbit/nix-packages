@@ -1,7 +1,8 @@
 {
     buildPythonPackage,
     fetchFromGitHub,
-    transformers
+    transformers,
+    setuptools
 }:
 
 buildPythonPackage {
@@ -18,6 +19,9 @@ buildPythonPackage {
     buildInputs = [
         transformers
     ];
+
+    pyproject = true;
+    build-system = [ setuptools ];
 
     doCheck = false;
 

@@ -23,7 +23,8 @@
     pillow,
     websockets,
     psutil,
-    prometheus-client
+    prometheus-client,
+    setuptools
 }:
 
 let
@@ -35,6 +36,7 @@ in
         version = "${version}";
 
         format = "wheel";
+        build-system = [ setuptools ];
 
         src = fetchurl {
             url = "https://github.com/selkies-project/selkies-gstreamer/releases/download/v${version}/selkies_gstreamer-${version}-py3-none-any.whl";

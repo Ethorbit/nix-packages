@@ -11,7 +11,6 @@
     cmake,
     zsh,
     obs-studio,
-    qt6,
     libpulseaudio
 }:
 
@@ -30,7 +29,6 @@ stdenv.mkDerivation (finalAttrs: {
         cmake
         zsh
         obs-studio
-        qt6.full
     ];
 
     propagatedBuildInputs = [

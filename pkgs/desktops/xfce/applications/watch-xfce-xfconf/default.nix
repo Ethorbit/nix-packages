@@ -4,6 +4,7 @@
     fetchFromGitHub,
     psutil,
     lxml,
+    setuptools
 }:
 
 buildPythonPackage rec {
@@ -16,6 +17,9 @@ buildPythonPackage rec {
         rev = "v${version}";
         hash = "sha256-CkKZ8ro2nZJ5h8Vxa9xvuMgiIgp6mWC4jIQWAX2xMO4=";
     });
+
+    pyproject = true;
+    build-system = [ setuptools ];
 
     propagatedBuildInputs = [
         psutil
