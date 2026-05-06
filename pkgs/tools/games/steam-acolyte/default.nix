@@ -3,10 +3,11 @@
     buildPythonPackage,
     fetchFromGitHub,
     pyqt5,
+    libsForQt5,
     vdf,
     docopt,
     importlib-resources,
-    setuptools
+    setuptools   
 }:
 
 buildPythonPackage rec {
@@ -29,6 +30,15 @@ buildPythonPackage rec {
         docopt
         importlib-resources
     ];
+
+    nativeBuildInputs = [
+        libsForQt5.wrapQtAppsHook
+    ];
+
+    dontWrapQtApps = true;
+    preFixup = ''
+        makeWrapperArgs+=("''${qtWrapperArgs[@]}")
+    '';
 
     doCheck = false;
 
