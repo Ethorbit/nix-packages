@@ -13,6 +13,8 @@ with pkgs;
     gm-autorun-ng = callPackage ./tools/games/gm-autorun-ng {};
     gm-autorun-ng-windows = pkgs.pkgsCross.mingwW64.callPackage ./tools/games/gm-autorun-ng {};
 
+    gshader-lsp = callPackage ./development/language-servers/gdshader-lsp {};
+
     mousejail = callPackage ./tools/X11/mousejail {};
 
     mount-wait = callPackage ./tools/misc/mount-wait {};
