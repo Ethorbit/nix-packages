@@ -7,6 +7,8 @@ with pkgs;
 
     ctrld = callPackage ./servers/ctrld {};
 
+    easydotnet = callPackage ./tools/dotnet/easydotnet {};
+
     filen-cli = callPackage ./tools/networking/filen-cli {};
 
     gmpublisher = python312Packages.callPackage ./tools/games/gmpublisher {};
