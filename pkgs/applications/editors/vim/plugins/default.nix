@@ -15,4 +15,8 @@
     godotdev-nvim = callPackage ./godotdev-nvim {
         inherit (vimUtils) buildVimPlugin;
     };
+
+    header-nvim = callPackage ./header-nvim {
+        inherit (vimUtils) buildVimPlugin;
+    };
 }
