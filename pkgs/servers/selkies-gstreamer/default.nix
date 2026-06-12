@@ -7,7 +7,8 @@
     gst_all_1,
     callPackage,
     xsel,
-    xorg,
+    xorg ? null,
+    xrandr ? null,
     cudaPackages,
 
     # ethorbit
@@ -57,8 +58,13 @@ in
             gst_all_1.gst-plugins-bad
             gst_all_1.gst-plugins-ugly
             gst_all_1.gst-plugins-good
-            xorg.xrandr
-        ];
+        ] ++ (
+            if xorg != null then [
+                xorg.xrandr
+            ] else [
+                xrandr
+            ]
+        );
 
         propagatedBuildInputs = [
             gputil

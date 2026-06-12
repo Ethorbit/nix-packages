@@ -6,10 +6,16 @@ in
 {
     config = lib.mkIf cfg.enable {
         environment.systemPackages = with pkgs; [
-            xorg.xrandr
-            xorg.libxcvt
             libGL
             virtualgl
-        ];
+        ] ++ (
+            if builtins.hasAttr xorg pkgs then [
+                xorg.xrandr
+                xorg.libxcvt
+            ] else [
+                xrandr
+                libxcvt
+            ]
+        );
     };
 }

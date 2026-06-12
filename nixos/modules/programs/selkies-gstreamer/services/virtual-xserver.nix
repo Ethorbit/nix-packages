@@ -2,6 +2,9 @@
 
 let
     cfg = config.ethorbit.programs.selkies-gstreamer;
+    xvfb = if builtins.hasAttr "xorg" pkgs 
+        then pkgs.xorg.xvfb 
+        else pkgs.xvfb;
 in
 {
     config = lib.mkIf cfg.enable {
@@ -22,7 +25,7 @@ in
                 "${cfg.services.userValidationScript}/bin/script" || exit 0
 
                 # Run Xvfb server and its commands with required extensions
-                ${pkgs.xorg.xvfb}/bin/Xvfb "''${DISPLAY}" -ac -screen "0" "8192x4096x''${DISPLAY_CDEPTH}" -dpi "''${DISPLAY_DPI}" +extension "COMPOSITE" +extension "DAMAGE" +extension "GLX" +extension "RANDR" +extension "RENDER" +extension "MIT-SHM" +extension "XFIXES" +extension "XTEST" +iglx +render -nolisten "tcp" -noreset -shmem
+                ${xvfb}/bin/Xvfb "''${DISPLAY}" -ac -screen "0" "8192x4096x''${DISPLAY_CDEPTH}" -dpi "''${DISPLAY_DPI}" +extension "COMPOSITE" +extension "DAMAGE" +extension "GLX" +extension "RANDR" +extension "RENDER" +extension "MIT-SHM" +extension "XFIXES" +extension "XTEST" +iglx +render -nolisten "tcp" -noreset -shmem
             '';
 
             wantedBy = [ "default.target" ];

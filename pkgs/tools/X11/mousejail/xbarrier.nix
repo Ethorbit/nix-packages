@@ -4,7 +4,10 @@
     fetchFromGitHub,
     libgcc,
     pkg-config,
-    xorg
+    xorg ? null,
+    libX11 ? null,
+    libXtst ? null,
+    libXfixes ? null
 }:
 
 stdenv.mkDerivation {
@@ -20,10 +23,17 @@ stdenv.mkDerivation {
     buildInputs = [
         libgcc
         pkg-config
-        xorg.libX11
-        xorg.libXtst
-        xorg.libXfixes
-    ];
+    ] ++ (
+        if xorg != null then [
+            xorg.libX11
+            xorg.libXtst
+            xorg.libXfixes
+        ] else [
+            libX11
+            libXtst
+            libXfixes
+        ]
+    );
     buildPhase = ''
         gcc xbarrier.c $(pkg-config --cflags --libs x11 xfixes) -o xbarrier
     '';
